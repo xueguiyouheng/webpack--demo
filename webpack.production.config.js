@@ -20,16 +20,36 @@ module.exports = {
             // 'immutable'
         ]
     },
-    output:{
-        filename:'[name].[chunkhash:8].js',
-        path:path.resolve(__dirname, '/build'),
-        publicPath: '/'
+    // output:{
+    //     filename:'[name].[chunkhash:8].js',
+    //     path:path.resolve(__dirname, './build'),
+    //     publicPath: './'
+    // },
+
+    output: {
+        path: path.resolve(__dirname, './build'),
+        filename: 'js/[name].js',
+        chunkFilename: 'js/[name].[chunkhash:8].js',
+        publicPath: '/_static_/', //最终访问的路径就是：localhost:3000/_static_/js/*.js
+        //pathinfo:true,
     },
+    
 
     module:{
         loaders: [
             { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel-loader', query: { presets: ['env', 'react'] } },
-            { test: /\.less$/, exclude: /node_modules/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader', 'less-loader') },
+            {
+                test: /\.less$/,
+                use: ExtractTextPlugin.extract({
+                    use: [{
+                        loader: "css-loader"
+                    }, {
+                        loader: "less-loader"
+                    }],
+                    // use style-loader in development
+                    fallback: "style-loader"
+                })
+            },
             { test: /\.css$/, exclude: /node_modules/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader') },
             { test: /\.(png|gif|jpg|jpeg|bmp)$/i, loader: 'url-loader?limit=5000&name=img/[name].[chunkhash:8].[ext]' },
             { test: /\.(png|woff|woff2|svg|ttf|eot)($|\?)/i, loader: 'url-loader?limit=5000&name=fonts/[name].[chunkhash:8].[ext]' }
@@ -53,7 +73,7 @@ module.exports = {
         //去除警告部分
         new webpack.optimize.UglifyJsPlugin({
             compress: {
-                warings: false,
+                warnings: false,
             }
         }),
         // 分离CSS和JS文件
