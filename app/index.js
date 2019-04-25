@@ -1,22 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Children from './src/home';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import todoApp from './src/reducers'
+import App from './src/components/App'
 
-class App extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = {
-            start:'open'
-        }
-    }
-
-    render () {
-        const { start } = this.state;
-        return <div>
-            { start }
-            <Children />
-        </div>
-    }
-}
-
-ReactDOM.render(<App />, document.getElementById('root'));
+let store = createStore(todoApp)
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)

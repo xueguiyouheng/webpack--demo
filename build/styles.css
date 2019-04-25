@@ -1,5 +1,6 @@
 /*! Copyright by fjl. */
-.home {
-  color: #999;
-  background: pink;
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: #f5f5f5;
 }
