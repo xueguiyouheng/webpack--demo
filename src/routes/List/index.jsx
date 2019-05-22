@@ -1,6 +1,16 @@
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setVisibilityFilter } from '../actions'
-import Link from '../components/Link'
+
+export default class List extends Component {
+  constructor(props) {
+    super(props)
+      
+  }
+
+  render() {
+    return <section>List</section>
+  }
+}
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -18,6 +28,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const FilterLink = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Link)
-
-export default FilterLink
+)(List)
