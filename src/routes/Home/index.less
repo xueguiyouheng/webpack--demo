@@ -6,3 +6,49 @@
         background: pink;
     }
 }
+.scroll {
+    margin: 100px 0;
+}
+.scroll-offset {
+    &-container {
+        width: 100vw;
+        height: 300px;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        &-list {
+            display: flex;
+            height: 100%;
+            width: fit-content;
+            &-item {
+                width: 500px;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                margin: 24px;
+                
+
+            }
+        }
+    }
+}
+
+.red {
+    scroll-snap-align: start;
+}
+.blue {
+    scroll-snap-align: center;
+}
+.yellow {
+    scroll-snap-align: center;
+}
+.brown {
+    scroll-snap-align: center;
+}
+.pink {
+    scroll-snap-align: center;
+}
+.purple {
+    scroll-snap-align: end;
+}

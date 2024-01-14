@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './index.less'
 import db from '../../db'
+import Scroll from './scroll';
 
 class Home extends Component {
   constructor(props) {
@@ -28,11 +29,14 @@ class Home extends Component {
   render() {
     const {home, onClick} = this.props
     return <section className="container">
-      <p>{home.id}</p>
+      {/* <p>{home.id}</p>
       <button onClick={() => {onClick(home.id)}}
       >
         click
-      </button>
+      </button> */}
+      <div className="scroll">
+        <Scroll />
+      </div>
     </section>
   }
 }

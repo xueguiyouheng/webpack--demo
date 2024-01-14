@@ -12,6 +12,8 @@ const routes = (
       <Route path="/list" component={List} />
       <Route component={Home} />
     </Switch>
+
+    <div id="myDiv">123 </div>
   </div>
 )
 
